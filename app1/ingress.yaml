@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argo-springboot-test-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: test-1921680133-argo.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: argo-springboot-test-svc
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix

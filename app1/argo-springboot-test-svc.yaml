@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: argo-springboot-test
+    app.kubernetes.io/instance: testapp1
+  name: argo-springboot-test-svc
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: argo-springboot-test

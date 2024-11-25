@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: argo-springboot-test
+  name: argo-springboot-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argo-springboot-test
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: argo-springboot-test
+    spec:
+      volumes:
+      - name: app-config
+        secret:
+          secretName: argo-springboot-test-secret
+      containers:
+      - image: argo-springboot-demo:v1
+        imagePullPolicy: IfNotPresent
+        name: argo-springboot-demo
+        volumeMounts:
+        - name: app-config
+          mountPath: /build/application.properties
+          subPath: application.properties

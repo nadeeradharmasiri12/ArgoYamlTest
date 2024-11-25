@@ -5,6 +5,8 @@ metadata:
   labels:
     app: argo-springboot-test
   name: argo-springboot-test
+  annotations:
+    secret.reloader.stakater.com/reload: "argo-springboot-test-secret"
 spec:
   replicas: 1
   selector:
